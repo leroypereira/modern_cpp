@@ -37,8 +37,10 @@ void ShowInfo(const std::unique_ptr<Employee>& emp)
 
 int main()
 {
-    std::shared_ptr<Project> prj{new Project{}};
+    std::shared_ptr<Project> prj =  std::make_shared<Project>(Project{});
+    Project *prjPtr = prj.get();
     prj->SetName("Video Decoder");
+    
     std::unique_ptr<Employee> e1{new Employee{}};
     e1->SetProject(prj);
     std::unique_ptr<Employee> e2{new Employee{}};

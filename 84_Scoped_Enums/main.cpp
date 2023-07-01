@@ -29,13 +29,36 @@ void FillColor(Color color)
 }
 
 enum class TrafficLights: char {RED='c', GREEN, YELLOW};
+
+void FillColorTrafficLights(TrafficLights color)
+{
+    if(color == TrafficLights::RED)
+    {
+        //paint with red
+        std::cout<<"RED"<<std::endl;
+    }
+    else if (color == TrafficLights::GREEN)
+    {
+        //paint with green
+        std::cout<<"GREEN"<<std::endl;
+    }
+    else if(color == TrafficLights::YELLOW)
+    {
+        std::cout<<"BLUE"<<std::endl;
+    }
+}
+
+
+
 int main()
 {
     //FillColor(2); //error integer cannot implicity convert to an enum type
     // FillColor(RED); //no error when the enums are not scoped, however trafficLights has also red and will cause an error
-    FillColor(Color::RED);
-    FillColor(static_cast<Color>(5)); // undefined behaviour
+    // FillColor(Color::RED);
+    // FillColor(static_cast<Color>(5)); // undefined behaviour
     int x = Color::RED;
+    int x = static_cast<int>(TrafficLights::GREEN); // scoped enums dont allow implicity conversion of the enums to literals
+    FillColorTrafficLights(TrafficLights::GREEN);
     return 0;
 }
 
